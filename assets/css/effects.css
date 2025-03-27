@@ -1,0 +1,247 @@
+/* <------------------------Switch effects---------------------------> */
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Text labels */
+.label {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0 10px; /* Space between label and switch */
+}
+
+.switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* The small circle inside the switch */
+.toggle-btn {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.3s ease;
+}
+
+/* When the switch is active */
+.switch.active {
+    background-color: #4CAF50;
+}
+
+/* Move the circle to the right when active */
+.switch.active .toggle-btn {
+    left: 33px;
+}
+
+@keyframes blink {  /* Keyframes for the blinking effect */
+    0%, 100% {
+        opacity: 1; /* Fully visible */
+    }
+    50% {
+        opacity: 0; /* Fully invisible */
+    }
+}
+
+/* <------------------------Windows CMD effects---------------------------> */
+#command-console {
+    border: 0.5px outset rgb(12, 12, 12);     /* Thin border around the entire container */
+    width: 100%;                                /* Full width of the parent */
+    display: block;                             /* Block display to occupy full width */
+    box-sizing: border-box;                     /* Include border in the total width calculation */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Light shadow */
+}
+
+.cmd-img::selection {
+    background: transparent;
+}
+
+#cmd-cursor-select {
+    position: relative; /* Positioning context for the pseudo-element */
+    text-decoration: none; /* Remove the default underline */
+}
+
+#cmd-cursor-select::after {
+    content: "";        /* Required for the pseudo-element */
+    position: absolute; /* Position the underline */
+    left: 0;            /* Align to the left */
+    bottom: 0;          /* Position at the bottom of the text */
+    width: 100%;        /* Full width of the text */
+    height: 1px;        /* Height of the underline */
+    background-color: rgb(242,242,242);
+    animation: blink 1s step-end infinite;
+}
+
+#cmd-cursor {
+    display: inline-block;                 /* Make the cursor inline */
+    /*animation: blink 0.666s step-end infinite;  Blink effect */
+    width: 3px;                            /* Set the width of the underscore */
+    height: 2px;                           /* Set the height of the underscore */
+    color: rgb(242,242,242);
+    background-color: rgb(12, 12, 12);   /* Color of the underscore */
+    margin-bottom: -1px;                   /* Optional: Adjusts the vertical position */
+    animation: blink 1s step-end infinite;
+}
+
+#cmd-cursor::selection {
+    background: transparent; /* Background color when selected */
+}
+
+#cmd-bar {
+    background-color: white; 
+    width: 100%; 
+    height: 31px; 
+    padding: 0; 
+    margin: 0 auto; 
+    position: relative;
+}
+
+#cmd-body {
+    /* fixed size */
+    width: 100%;          
+    height: 500px; 
+    /* color */
+    background-color: rgb(12,12,12); 
+    color: rgb(242,242,242); 
+    /* text customize */
+    margin: 0; 
+    line-height: 1;
+    font-family: 'Consolas', monospace;
+    font-size: 16px; 
+    font-weight:100;
+    padding: 0 1px;
+    /* misc effects */
+    white-space: pre-wrap; /* Allows preserving spaces and line breaks */
+    outline: none;         /* Remove outline when focused */
+    overflow-y: auto;      /* Show scroll bar automatically */
+}
+
+#cmd-body span::selection {
+    background: white !important; 
+    color: black      !important;
+}
+
+#cmd-body br::selection {
+    background: white !important; 
+    color: black      !important;
+}
+
+/* <------------------------Ubuntu Terminal effects---------------------------> */
+.terminal-img::selection {
+    background: transparent;
+}
+
+#terminal-title::selection {
+    background: transparent;
+}
+
+#terminal-cursor-select {
+    position: relative;   /* Positioning context for the pseudo-element */
+}
+
+#terminal-cursor-select::after {
+    content: ""; 
+    position: absolute; 
+    left: 0;
+    display: inline-block;
+    height: 16px;
+    width: 10px;
+    background-color: rgb(242,242,242);
+    color: rgb(48,10,36);
+    opacity: 0;
+    box-shadow: 0px 5px rgb(242,242,242);
+    animation: 2s ease infinite alternate blink;
+}
+
+#terminal-cursor {
+    display: inline-block;
+    height: 16px;
+    width: 8px;
+    background: rgb(48,10,36);
+    color: rgb(242,242,242);
+    animation: 1.5s ease infinite alternate blink;
+}
+
+#terminal-cursor::selection {
+    background: transparent; /* Background color when selected */
+}
+
+#terminal-bar {
+    background-color: rgb(34, 34, 34);
+    
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    font-family: 'Ubuntu', monospace;
+    width: 100%; 
+    height: 46px; 
+    margin: 0 auto; 
+    padding: 0; 
+    position: relative;
+}
+
+#terminal-body {
+    /* fixed size */
+    width: 100%;          
+    height: 485px; 
+    /* color */
+    background-color: rgb(48,10,36); 
+    color: rgb(242,242,242); 
+    /* text customize */
+    margin: 0; 
+    line-height: 1.25;
+    font-family: 'Ubuntu', monospace;
+    font-size: 17px; 
+    font-weight:100;
+    padding: 0 1px;
+    /* misc effects */
+    white-space: pre-wrap; /* Allows preserving spaces and line breaks */
+    outline: none;         /* Remove outline when focused */
+    overflow-y: auto;      /* Show scroll bar automatically */
+}
+
+#terminal-body span::selection {
+    background: white    ; 
+    color: rgb(48,10,36) !important;
+}
+
+#terminal-body br::selection {
+    background: white    !important; 
+    color: rgb(48,10,36) !important;
+}
+
+.terminal-prompt::selection {
+    background: rgb(38,162,105)  !important;
+    color: rgb(48,10,36) !important; 
+}
+
+.terminal-directory {
+    color: rgb(18,72,139) !important; 
+    font-weight: bold;
+}
+
+.terminal-directory::selection {
+    background: rgb(18,72,139)  !important;
+    color: rgb(48,10,36) !important; 
+}
+
+.terminal-file-exec {
+    color: rgb(38,162,105) !important; 
+    font-weight: bold;
+}
+
+.terminal-file-exec::selection {
+    background: rgb(38,162,105)  !important;
+    color: rgb(48,10,36) !important; 
+}

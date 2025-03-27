@@ -1,0 +1,95 @@
+TERMINAL (to be done):
+- whoami (done)
+- clear (done)
+- cd (file, ., ..) (done)
+- touch 
+- echo (>>) (done)
+- cat (done)
+- ls (-a; -l; -la) (done)
+- mkdir (done)
+- file (?)
+- history (done)
+- ; (pipe) ()
+- sudo (done)
+- rmdir (done)
+- rm (-r, -f, -rf) (done)
+- adduser (done)
+- deluser (done)
+- find
+
+CMD:
+- cls
+- whoami
+
+
+
+known issue or goal (either ignored or being worked on): 
+ls file1 file2 dir1 dir2: will group files and dirs separately, but will not print out in a sorted order
+disable ctrl -a inside the the div
+
+add command to change home_dir ~
+
+
+```testing log (manual) for cd/ls
+ls /home/sethuaung/code --> good
+ls /home/sethuaung/.. --> good
+ls ~/../../home/felixent/../sethuaung/code/../../felixent/ex --> good
+ls /home/sethuaung/./../felixent --> good
+ls ~/../../bin/../home/felixent/././ex/../ --> ex MKNQ --> good
+cd ~/../../bin/../home/felixent/././ex/../
+pwd --> /home/felixent/ex --> good
+cd ~/../../bin/../home/../bin/../home/felixent/./////////////./ex/../ex --> pwd /home/felixent/ex/ -->  good
+cd ~/../../bin/../home/../bin/../home/felixent/./////////////./ex/../ex/../MKNQ --> good (not a directory)
+
+cd /
+cd home/sethuaung/
+pwd --> //home/sethuaung --> good (fixed)
+
+cd /
+cd ../bin/../home/../bin/../bin/../home/sethuaung/../felixent/../.. should take you to '/' --> good
+
+cd /home 
+cd ../bin/../home/../bin/../bin/../home/sethuaung/../felixent/../.. should take you to '/' --> good
+
+cd ~
+cd ../bin/../home/../bin/../bin/../home/sethuaung/../felixent/../.. should give No such file/dir error (~~bad~~ good, false alarm)
+cd: ../bin/../home/../bin/../bin/../home/sethuaung/../felixent/../../felixent: Permission denied --> good
+
+
+in actual Ubuntu, when you type `cd ../bin/..`, it will check the existence of each file as it traverses
+meaning, it will go back to parent directory .. and check if 'bin' is there, and return an error if not
+however, in my simulator, to simplify the pathing input, I decided to make a function that would read the path as a whole
+and return a new path that is relative to the current working directory (if path starts with . or ..)
+For example, if pwd is '/home/user', typing '../bin/..' would be read as '/home/user/../bin/..' which is equivalent to '/home', and so it will change the pwd to '/home'.
+In actual Ubuntu, it will go to .. from '/home/user' which is now '/home/', check for 'bin', and if 'bin' is not there, it will return an error saying File not found.
+
+working on SUDO (done)
+
+goal:
+change user (su - username)
+add user (sudo adduser username)
+remove user
+
+rmdir
+rm -r
+
+touch
+cat
+echo
+
+chmod
+
+whoami sethuaung
+pwd /home/felixent/ex
+ls ../ex --> should return Permission denied but mine doesnt
+
+```
+
+
+DOCUMENT note:
+history store all commands (bad and good) (?)
+
+
+future improve:
+filenode timestamps
+
